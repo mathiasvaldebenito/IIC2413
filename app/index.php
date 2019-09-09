@@ -6,7 +6,7 @@
 
   <br>
 
-  <h3 align="center"> ¿Quieres buscar un ONG por PAIS y/o nombre?</h3>
+  <h2 align="center"> ¿Quieres buscar un ONG por PAIS y/o nombre?</h2>
 
   <form align="center" action="consultas/consulta_tipo_nombre.php" method="post">
     Pais:
@@ -22,10 +22,19 @@
   <br>
   <br>
 
-  <h3 align="center"> Consulta 2 </h3>
+  <h2 align="center">Consulta 1</h2>
+
+  <form align="center" action="consultas/consulta_marchas_2020.php" method="post">
+
+    <input type="submit" value="Buscar">
+
+  </form>
+
+
+  <h2 align="center"> Consulta 2 </h2>
 
   <form align="center" action="consultas/consultas_marchas_proximas.php" method="post">
-    <h2>Fecha 1</h2>
+    <h3>Fecha 1</h3>
     Día:
     <input type="text" name="dia1">
     <br/>
@@ -35,7 +44,7 @@
     Año:
     <input type="text" name="ano1">
     <br/>
-    <h2>Fecha 2</h2>
+    <h3>Fecha 2</h3>
     Día:
     <input type="text" name="dia2">
     <br/>
@@ -48,10 +57,13 @@
     <input type="submit" value="Buscar">
   </form>
 
-  <h3>Consulta 3</h3>
+  <h2>Consulta 3</h2>
 
   <form aling="center" action="consultas/consulta_ong_recurso_proyecto.php" method="post">
-
+    Proyecto:
+    <input type="text" name="proyecto">
+    <br/><br/>
+    <input type="submit" value="Buscar">
   </form>
 
 </body>
