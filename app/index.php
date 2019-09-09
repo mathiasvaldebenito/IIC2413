@@ -66,5 +66,13 @@
     <input type="submit" value="Buscar">
   </form>
 
+  <h2 align="center">Consulta 4</h2>
+
+  <form align="center" action="consultas/consulta_regiones_recurso_vigente.php" method="post">
+
+    <input type="submit" value="Buscar">
+
+  </form>
+
 </body>
 </html>
