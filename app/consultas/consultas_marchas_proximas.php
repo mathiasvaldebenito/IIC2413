@@ -21,12 +21,14 @@
   	$motions = $result -> fetchAll();
     ?>
 
-  	<table>
+    <table class="table table-hover table-sm">
+      <thead class="table-head dark">
       <tr>
-        <th>Ong</th>
+        <th>ONG</th>
         <th>Proyecto</th>
         <th>Fecha</th>
       </tr>
+      </thead>
     <?php
   	foreach ($motions as $motion) {
     		echo "<tr> <td>$motion[0]</td> <td>$motion[1]</td> <td>$motion[2]</td> </tr>";

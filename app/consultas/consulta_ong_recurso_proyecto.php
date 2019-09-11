@@ -15,10 +15,12 @@
     $ongs = $result -> fetchAll();
     ?>
 
-    <table>
+    <table class="table table-hover table-sm">
+      <thead class="table-head dark">
       <tr>
-        <th>Ong</th>
+        <th>ONG</th>
       </tr>
+      </thead>
     <?php
     foreach ($ongs as $ong) {
         echo "<tr> <td>$ong[0]</td> </tr>";

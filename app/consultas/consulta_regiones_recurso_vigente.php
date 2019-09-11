@@ -14,10 +14,12 @@
 	$regiones = $result -> fetchAll();
   ?>
 
-	<table>
+  <table class="table table-hover table-sm">
+    <thead class="table-head dark">
     <tr>
       <th>Región</th>
     </tr>
+    </thead>
   <?php
 	foreach ($regiones as $region) {
   		echo "<tr> <td>$region[0]</td> </tr>";
