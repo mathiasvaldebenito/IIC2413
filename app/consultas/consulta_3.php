@@ -10,6 +10,7 @@
     $query = "SELECT ong, numero, proyecto FROM presentan, denuncian
               WHERE presentan.numero = denuncian.numero
               AND proyecto LIKE '%$proyecto%';";
+              
     $result = $db -> prepare($query);
     $result -> execute();
     $ongs = $result -> fetchAll();
@@ -25,9 +26,9 @@
       </thead>
     <?php
     foreach ($ongs as $ong) {
-        echo "<tr> <td>$ong[0]</td> </tr>";
-        echo "<tr> <td>$ong[1]</td> </tr>";
-        echo "<tr> <td>$ong[2]</td> </tr>";
+        echo "<tr> <td>$ong[0]</td>
+                   <td>$ong[1]</td>
+                   <td>$ong[2]</td> </tr>";
     }
     ?>
     </table>

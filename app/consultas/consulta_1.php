@@ -11,6 +11,7 @@
               FROM movilizacionmarcha, convocan
               WHERE movilizacionmarcha.id = convocan.id_movilizacion
               AND fecha < '%2021-01-01%' AND fecha > '%2019-12-31%';";
+
   	$result = $db -> prepare($query);
   	$result -> execute();
   	$motions = $result -> fetchAll();
@@ -26,7 +27,9 @@
     </thead>
     <?php
   	foreach ($motions as $motion) {
-    		echo "<tr> <td>$motion[0]</td> <td>$motion[1]</td> <td>$motion[2]</td> </tr>";
+    		echo "<tr> <td>$motion[0]</td>
+                   <td>$motion[1]</td>
+                   <td>$motion[2]</td> </tr>";
   	}
     ?>
   	</table>

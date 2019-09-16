@@ -38,10 +38,10 @@
     </thead>
   <?php
 	foreach ($proyectos as $proyecto) {
-  		echo "<tr> <td>$proyecto[0]</td> ";
-      echo "<tr> <td>$proyecto[1]</td> ";
-      echo "<tr> <td>$proyecto[2]</td> ";
-      echo "<tr> <td>$proyecto[3]</td> ";
+  		echo "<tr> <td>$proyecto[0]</td>
+                 <td>$proyecto[1]</td>
+                 <td>$proyecto[2]</td>
+                 <td>$proyecto[3]</td> ";
 	}
   ?>
 	</table>
