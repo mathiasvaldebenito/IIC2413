@@ -26,6 +26,8 @@
     <?php
     foreach ($ongs as $ong) {
         echo "<tr> <td>$ong[0]</td> </tr>";
+        echo "<tr> <td>$ong[1]</td> </tr>";
+        echo "<tr> <td>$ong[2]</td> </tr>";
     }
     ?>
     </table>

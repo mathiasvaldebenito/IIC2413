@@ -18,7 +18,7 @@
               WHERE fecha_apertura < '%$date2%' AND fecha_apertura > '%$date1%';";
   	$result = $db -> prepare($query);
   	$result -> execute();
-  	$motions = $result -> fetchAll();
+  	$recursos = $result -> fetchAll();
     ?>
 
     <table class="table table-hover table-sm">
@@ -29,8 +29,8 @@
       </tr>
       </thead>
     <?php
-  	foreach ($motions as $motion) {
-    		echo "<tr> <td>$motion[0]</td> <td>$motion[1]</td> <td>$motion[2]</td> </tr>";
+  	foreach ($recursos as $recurso) {
+    		echo "<tr> <td>$recurso[0]</td> <td>$recurso[1]</td> </tr>";
   	}
     ?>
   	</table>
