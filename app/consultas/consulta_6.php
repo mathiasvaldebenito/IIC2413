@@ -24,7 +24,7 @@
 
 	$result = $db -> prepare($query);
 	$result -> execute();
-	$regiones = $result -> fetchAll();
+	$proyectos = $result -> fetchAll();
   ?>
 
 	<table class="table table-hover table-sm">
@@ -37,11 +37,11 @@
     </tr>
     </thead>
   <?php
-	foreach ($results as $result) {
-  		echo "<tr> <td>$result[0]</td> ";
-      echo "<tr> <td>$result[1]</td> ";
-      echo "<tr> <td>$result[2]</td> ";
-      echo "<tr> <td>$result[3]</td> ";
+	foreach ($proyectos as $proyecto) {
+  		echo "<tr> <td>$proyecto[0]</td> ";
+      echo "<tr> <td>$proyecto[1]</td> ";
+      echo "<tr> <td>$proyecto[2]</td> ";
+      echo "<tr> <td>$proyecto[3]</td> ";
 	}
   ?>
 	</table>

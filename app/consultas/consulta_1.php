@@ -15,12 +15,6 @@
   	$result -> execute();
   	$motions = $result -> fetchAll();
     ?>
-    <div class="jumbotron jumbotron-fluid bg-dark text-white">
-      <div class="container">
-        <h1 class="display-4">ONGs y Movilizaciones</h1>
-        <p class="lead">Aquí podrás encontrar información sobre OENEGES.</p>
-      </div>
-    </div>
 
   	<table class="table table-hover table-sm">
       <thead class="table-head dark">
