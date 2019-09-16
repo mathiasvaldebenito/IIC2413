@@ -2,7 +2,6 @@
 
 <body>
 
-
   <?php
     #Llama a conexión, crea el objeto PDO y obtiene la variable $db
     require("../config/conexion.php");
@@ -18,7 +17,7 @@
     ?>
 
   	<table class="table table-hover table-sm">
-      <thead class="table-head dark">
+      <thead class="thead-dark">
       <tr>
         <th>ONG</th>
         <th>Proyecto</th>

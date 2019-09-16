@@ -7,17 +7,17 @@
 
     $proyecto = $_POST["proyecto"];
 
-    $query = "SELECT ong, numero, proyecto FROM presentan, denuncian
+    $query = "SELECT ong, presentan.numero, proyecto FROM presentan, denuncian
               WHERE presentan.numero = denuncian.numero
               AND proyecto LIKE '%$proyecto%';";
-              
+
     $result = $db -> prepare($query);
     $result -> execute();
     $ongs = $result -> fetchAll();
     ?>
 
     <table class="table table-hover table-sm">
-      <thead class="table-head dark">
+      <thead class="thead-dark">
       <tr>
         <th>ONG</th>
         <th>Recurso</th>

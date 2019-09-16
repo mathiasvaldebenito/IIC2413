@@ -6,8 +6,8 @@
   #Llama a conexión, crea el objeto PDO y obtiene la variable $db
   require("../config/conexion.php");
 
- 	$query = "SELECT DISTINCT region_tramitacion FROM tramita, comuna_region_rec
-            WHERE tramita.numero NOT IN (SELECT recursocerrado.numero FROM recursocerrado)
+ 	$query = "SELECT DISTINCT region_tramitacion FROM recurso, tramita, comuna_region_rec
+            WHERE tramita.numero = recurso.numero AND recurso.status != 'rechazado'
             AND tramita.comuna = comuna_region_rec.comuna_tramitacion;";
 
 	$result = $db -> prepare($query);
@@ -16,7 +16,7 @@
   ?>
 
   <table class="table table-hover table-sm">
-    <thead class="table-head dark">
+    <thead class="thead-dark">
     <tr>
       <th>Región</th>
     </tr>

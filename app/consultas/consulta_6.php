@@ -8,14 +8,14 @@
 
  	$query = "SELECT proyecto, id_movilizacion, tipo, fecha
             FROM denuncian, convocan, movilizacion
-            WHERE denuncian.numero NOT IN (SELECT recursocerrado.numero FROM recursocerrado)
+            WHERE denuncian.numero IN (SELECT recurso.numero FROM recurso WHERE recurso.status = 'en tramite')
             AND denuncian.proyecto = convocan.nombre_proyecto
             AND convocan.id_movilizacion = movilizacion.id
             AND movilizacion.tipo = 'marcha' AND fecha > CURRENT_TIMESTAMP
             UNION
             SELECT proyecto, id_movilizacion, tipo, fecha
             FROM denuncian, convocan, movilizacion, movilizacionredes
-            WHERE denuncian.numero NOT IN (SELECT recursocerrado.numero FROM recursocerrado)
+            WHERE denuncian.numero IN (SELECT recurso.numero FROM recurso WHERE recurso.status = 'en tramite')
             AND denuncian.proyecto = convocan.nombre_proyecto
             AND convocan.id_movilizacion = movilizacion.id
             AND movilizacion.id = movilizacionredes.id
@@ -28,7 +28,7 @@
   ?>
 
 	<table class="table table-hover table-sm">
-    <thead class="table-head dark">
+    <thead class="thead-dark">
     <tr>
       <th>Proyecto</th>
       <th>ID Movilización</th>

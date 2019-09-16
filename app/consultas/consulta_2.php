@@ -16,14 +16,14 @@
 
    	$query = "SELECT numero, fecha_apertura FROM recurso
               WHERE fecha_apertura < '%$date2%' AND fecha_apertura > '%$date1%';";
-              
+
   	$result = $db -> prepare($query);
   	$result -> execute();
   	$recursos = $result -> fetchAll();
     ?>
 
     <table class="table table-hover table-sm">
-      <thead class="table-head dark">
+      <thead class="thead-dark">
       <tr>
         <th>Recurso</th>
         <th>Fecha Apertura</th>

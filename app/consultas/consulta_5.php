@@ -17,7 +17,7 @@
   ?>
 
 	<table class="table table-hover table-sm">
-    <thead class="table-head dark">
+    <thead class="thead-dark">
       <th>ONG</th>
       <th>ID Movilización</th>
       <th>Tipo</th>
