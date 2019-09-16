@@ -29,7 +29,7 @@
       <div class="carousel-item">
         <h5 class="card-title">Consulta 2</h5>
         <p class="card-text">Muestra todos los recursos abiertos entre una fecha a y una fecha b.</p>
-            <form align="center" action="consultas/consultas_2.php" method="post">
+            <form align="center" action="consultas/consulta_2.php" method="post">
             <div class="form-row justify-content-center">
               <label class="col-form-label mr-4"> Fecha a: </label>
                 <input type="text" class="form-control col-sm-2 mr-2" name="dia1" placeholder="Día">
