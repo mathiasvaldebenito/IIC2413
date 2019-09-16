@@ -7,9 +7,9 @@
 
     $proyecto = $_POST["proyecto"];
 
-    $query = "SELECT nombre_ong FROM recursoabierto,presentan WHERE
-    recursoabierto.numero_recurso = presentan.numero_recurso AND
-    nombre LIKE '%$proyecto%';";
+    $query = "SELECT ong, numero, proyecto FROM presentan, denuncian
+              WHERE presentan.numero = denuncian.numero
+              AND proyecto LIKE '%$proyecto%';";
     $result = $db -> prepare($query);
     $result -> execute();
     $ongs = $result -> fetchAll();
@@ -19,6 +19,8 @@
       <thead class="table-head dark">
       <tr>
         <th>ONG</th>
+        <th>Recurso</th>
+        <th>Proyecto</th>
       </tr>
       </thead>
     <?php

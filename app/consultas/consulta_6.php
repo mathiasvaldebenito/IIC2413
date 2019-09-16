@@ -6,15 +6,21 @@
   #Llama a conexión, crea el objeto PDO y obtiene la variable $db
   require("../config/conexion.php");
 
- 	$query = "SELECT nombre, nombre_ong, tipo, fecha FROM recursoabierto
-            INNER JOIN MovilizacionMarcha
-            ON recursoabierto.nombre = MovilizacionMarcha.nombre_proyecto
-            WHERE fecha > CURRENT_TIMESTAMP
+ 	$query = "SELECT proyecto, id_movilizacion, tipo, fecha
+            FROM denuncian, convocan, movilizacion
+            WHERE denuncian.numero NOT IN (SELECT recursocerrado.numero FROM recursocerrado)
+            AND denuncian.proyecto = convocan.nombre_proyecto
+            AND convocan.id_movilizacion = movilizacion.id
+            AND movilizacion.tipo = 'marcha' AND fecha > CURRENT_TIMESTAMP
             UNION
-            SELECT nombre, nombre_ong, tipo, fecha FROM recursoabierto
-            INNER JOIN MovilizacionRedes
-            ON recursoabierto.nombre = MovilizacionRedes.nombre_proyecto
-            WHERE fecha + duracion > CURRENT_TIMESTAMP;";
+            SELECT proyecto, id_movilizacion, tipo, fecha
+            FROM denuncian, convocan, movilizacion, movilizacionredes
+            WHERE denuncian.numero NOT IN (SELECT recursocerrado.numero FROM recursocerrado)
+            AND denuncian.proyecto = convocan.nombre_proyecto
+            AND convocan.id_movilizacion = movilizacion.id
+            AND movilizacion.id = movilizacionredes.id
+            AND movilizacion.tipo = 'redes sociales'
+            AND fecha + duracion > CURRENT_TIMESTAMP;";
 
 	$result = $db -> prepare($query);
 	$result -> execute();
@@ -24,8 +30,8 @@
 	<table class="table table-hover table-sm">
     <thead class="table-head dark">
     <tr>
-      <th>Nombre Proyecto</th>
-      <th>ONG que convoca</th>
+      <th>Proyecto</th>
+      <th>ID Movilización</th>
       <th>Tipo</th>
       <th>Fecha</th>
     </tr>

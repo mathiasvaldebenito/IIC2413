@@ -6,12 +6,10 @@
   #Llama a conexión, crea el objeto PDO y obtiene la variable $db
   require("../config/conexion.php");
 
- 	$query =   "SELECT nombre_ong, nombre_proyecto,presupuesto,tipo
-              FROM movilizacionmarcha
-              UNION
-              SELECT nombre_ong,nombre_proyecto,presupuesto,tipo
-              FROM movilizacionredes
-              ORDER BY nombre_ong,presupuesto DESC";
+ 	$query =   "SELECT nombre_ong, id_movilizacion, tipo, presupuesto
+              FROM convocan, movilizacion
+              WHERE movilizacion.id = convocan.id_movilizacion
+              ORDER BY nombre_ong,presupuesto DESC;";
 	$result = $db -> prepare($query);
 	$result -> execute();
 	$ongs = $result -> fetchAll();
@@ -19,10 +17,10 @@
 
 	<table class="table table-hover table-sm">
     <thead class="table-head dark">
-      <th>Nombre ONG</th>
-      <th>Nombre Proyecto</th>
-      <th>Presupuesto</th>
+      <th>ONG</th>
+      <th>ID Movilización</th>
       <th>Tipo</th>
+      <th>Presupuesto</th>
     </tr>
     </thead>
   <?php
