@@ -16,8 +16,10 @@
   	$motions = $result -> fetchAll();
     ?>
 
-  	<table class="table table-hover table-sm">
-      <thead class="thead-dark">
+    <div class=container>
+    <div class="row justify-content-center" style="overflow: auto; max-height: 500px">
+    <table class="table table-hover table-sm w-auto">
+      <thead class="thead-dark" style="position: sticky; top: 0;">
       <tr>
         <th>ONG</th>
         <th>Proyecto</th>

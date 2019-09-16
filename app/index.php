@@ -5,7 +5,7 @@
 <div class="jumbotron jumbotron-fluid bg-dark text-white">
   <div class="container">
     <h1 class="display-4">ONGs y Movilizaciones</h1>
-    <p class="lead">Aquí podrás encontrar información sobre OENEGES.</p>
+    <p class="lead">Aquí podrás encontrar información sobre ONGs, Proyectos de Multinacionales, Movilizaciones, y más.</p>
   </div>
 </div>
 
@@ -32,17 +32,17 @@
             <form align="center" action="consultas/consultas_2.php" method="post">
             <div class="form-row justify-content-center">
               <label class="col-form-label mr-4"> Fecha a: </label>
-                <input type="text" class="form-control col-sm-2 mr-2" id="dia1" placeholder="Día">
-                <input type="text" class="form-control col-sm-2 mr-2" id="mes1" placeholder="Mes">
-                <input type="text" class="form-control col-sm-2" id="ano1" placeholder="Año">
+                <input type="text" class="form-control col-sm-2 mr-2" name="dia1" placeholder="Día">
+                <input type="text" class="form-control col-sm-2 mr-2" name="mes1" placeholder="Mes">
+                <input type="text" class="form-control col-sm-2" name="ano1" placeholder="Año">
             </div>
             <div class="form-row justify-content-center mt-2">
               <div class="col-auto">
               <label class="col-form-label mr-4"> Fecha b: </label>
               </div>
-                <input type="text" class="form-control col-sm-2 mr-2" id="dia2" placeholder="Día">
-                <input type="text" class="form-control col-sm-2 mr-2" id="mes2" placeholder="Mes">
-                <input type="text" class="form-control col-sm-2" id="ano2" placeholder="Año">
+                <input type="text" class="form-control col-sm-2 mr-2" name="dia2" placeholder="Día">
+                <input type="text" class="form-control col-sm-2 mr-2" name="mes2" placeholder="Mes">
+                <input type="text" class="form-control col-sm-2" name="ano2" placeholder="Año">
             </div>
             <input type="submit" class="btn btn-primary mt-4" value="Buscar" </input>
           </form>
@@ -52,7 +52,7 @@
             <h5 class="card-title">Consulta 3</h5>
             <p class="card-text"> Muestra todas las ONG que participan en un recurso para algún proyecto P. </p>
             <form aling="center" action="consultas/consulta_3.php" method="post">
-              <input type="text" class="form-control mb-4" id="proyecto" placeholder="Nombre Proyecto">
+              <input type="text" class="form-control mb-4" name="proyecto" placeholder="Nombre Proyecto">
               <input type="submit" class="btn btn-primary" value="Buscar">
             </form>
       </div>
@@ -89,7 +89,7 @@
     </a>
     <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only"> SIguiente </span>
+      <span class="sr-only"> Siguiente </span>
     </a>
   </div>
 </div>
