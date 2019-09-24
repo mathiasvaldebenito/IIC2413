@@ -5,11 +5,11 @@
 <div class="jumbotron jumbotron-fluid bg-dark text-white">
   <div class="container">
     <h1 class="display-4">ONGs y Movilizaciones</h1>
-    <p class="lead">Aquí podrás encontrar información sobre ONGs, Proyectos de Multinacionales, Movilizaciones, y más.</p>
+    <p class="lead">Aquí podrás encontrar información sobre ONGs, Proyectos de Multinacionales, Movilizaciones y más.</p>
   </div>
 </div>
 
-<div class=container >
+<div class=container>
 <div class="row justify-content-md-center">
 <div class="card text-center text-white bg-dark w-75">
   <div class="card-body">
