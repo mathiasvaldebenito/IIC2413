@@ -6,10 +6,14 @@
     #Llama a conexión, crea el objeto PDO y obtiene la variable $db
     require("../config/conexion.php");
 
+    $year = $_POST["year"];
+    $date1 = strval((int)$year + 1)."-01-01";
+    $date2 = strval((int)$year - 1)."-12-31";
+
    	$query = "SELECT nombre_ong,nombre_proyecto,fecha
               FROM movilizacionmarcha, convocan
               WHERE movilizacionmarcha.id = convocan.id_movilizacion
-              AND fecha < '%2021-01-01%' AND fecha > '%2019-12-31%';";
+              AND fecha < '%$date1%' AND fecha > '%$date2%';";
 
   	$result = $db -> prepare($query);
   	$result -> execute();
