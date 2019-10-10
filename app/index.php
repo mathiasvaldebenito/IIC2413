@@ -20,8 +20,9 @@
 
       <div class="carousel-item active">
             <h5 class="card-title">Consulta 1</h5>
-            <p class="card-text">Muestra todas las marchas planificadas para el 2020.</p>
+            <p class="card-text">Muestra todas las marchas planificadas para el año:</p>
             <form align="center" action="consultas/consulta_1.php" method="post">
+              <input type="text" class="form-control mb-4" name="year" placeholder="Año">
               <input type="submit" class="btn btn-primary" value="Buscar">
             </form>
       </div>
