@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ong_login"])){
     if(empty($name_err) && empty($password_err)){
         // Prepare a select statement
         $query = "SELECT id, name, password FROM ongs_registradas WHERE name LIKE '$name';";
-        $result = $db -> prepare($query);
+        $result = $db41 -> prepare($query);
         $result -> execute();
         $result = $result -> fetchAll();
         // Check if name exists, if yes then verify password
@@ -67,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ong_login"])){
         }
       }
     // Close connection
-    pg_close($db);
+    pg_close($db41);
 }
 ?>
 

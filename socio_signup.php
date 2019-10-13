@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["socio_signup"])){
         $param_firstname = trim($_POST["firstname"]);
         $param_lastname = trim($_POST["lastname"]);
         $query = "SELECT id FROM socios_registrados WHERE firstname LIKE '$param_firstname' AND lastname LIKE '$param_lastname';";
-        $result = $db -> prepare($query);
+        $result = $db41 -> prepare($query);
         $result -> execute();
         $result = $result -> fetchAll();
         if (!empty($result)) {
@@ -60,10 +60,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["socio_signup"])){
     if(empty($user_err) && empty($firstname_err) && empty($lastname_err) && empty($password_err) && empty($confirm_password_err)){
         $password = password_hash($password, PASSWORD_DEFAULT);
         $register = "INSERT INTO socios_registrados (firstname, lastname, password) VALUES ('$firstname', '$lastname', '$password');";
-        $result = $db -> prepare($register);
+        $result = $db41 -> prepare($register);
       	$result -> execute();
         $query = "SELECT id FROM socios_registrados WHERE firstname LIKE '$firstname' AND lastname LIKE '$lastname';";
-        $result = $db -> prepare($query);
+        $result = $db41 -> prepare($query);
         $result -> execute();
         $result = $result -> fetchAll();
         $id = $result[0][0];
@@ -78,7 +78,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["socio_signup"])){
       }
 
     // Close connection
-    pg_close($db);
+    pg_close($db41);
 }
 ?>
 

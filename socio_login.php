@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["socio_login"])){
     if(!empty(trim($_POST["lastname"])) && !empty(trim($_POST["firstname"])) && !empty(trim($_POST["password"]))) {
         $query = "SELECT id, firstname, lastname, password FROM socios_registrados
                   WHERE firstname LIKE '$firstname' AND lastname LIKE '$lastname';";
-        $result = $db -> prepare($query);
+        $result = $db41 -> prepare($query);
         $result -> execute();
         $result = $result -> fetchAll();
         if (!empty($result)) {
@@ -70,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["socio_login"])){
     }
 
     // Close connection
-    pg_close($db);
+    pg_close($db41);
 }
 ?>
 

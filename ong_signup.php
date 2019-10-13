@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ong_signup"])){
     } else{
         $param_name = $_POST["name"];
         $query = "SELECT id FROM ongs_registradas WHERE name LIKE '$param_name';";
-        $result = $db -> prepare($query);
+        $result = $db41 -> prepare($query);
         $result -> execute();
         $result = $result -> fetchAll();
         if (!empty($result)) {
@@ -54,12 +54,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ong_signup"])){
     // Check input errors before inserting in database
     if(empty($name_err) && empty($password_err) && empty($confirm_password_err)){
         $password = password_hash($password, PASSWORD_DEFAULT);
-        //$res = pg_insert($db, 'ongs_registradas', ['id' => 0, 'name' => $name, 'password' => $password]);
+        //$res = pg_insert($db41, 'ongs_registradas', ['id' => 0, 'name' => $name, 'password' => $password]);
         $register = "INSERT INTO ongs_registradas (name, password) VALUES ('$name', '$password')";
-        $result = $db -> prepare($register);
+        $result = $db41 -> prepare($register);
       	$result -> execute();
         $query = "SELECT id FROM ongs_registradas WHERE name LIKE '$name';";
-        $result = $db -> prepare($query);
+        $result = $db41 -> prepare($query);
         $result -> execute();
         $result = $result -> fetchAll();
         $id = $result[0][0];
@@ -76,7 +76,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ong_signup"])){
       }
 
     // Close connection
-    pg_close($db);
+    pg_close($db41);
 }
 ?>
 
