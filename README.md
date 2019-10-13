@@ -16,6 +16,7 @@
   * Login de aplicación:
       * Para socios.
       * Para ONGs.
+  Guía: https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php (Aquí usan MySql por lo que tuve que adaptarlo a PG, pero la idea es la misma)
 
   * Crear tablas que contengan los nombres de usuarios junto a contraseñas.
 
