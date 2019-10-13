@@ -37,10 +37,10 @@
       $tipo = $_SESSION["type"];
       $nombre = $_SESSION["name"];
       echo "<span class='navbar-text'> ¡Hola {$tipo} {$nombre}! </span>";
-      echo '<a class="btn btn-danger ml-2 my-2 my-sm-0" href="logout.php"> Cerrar Sesión </a>';
+      echo '<a class="btn btn-danger ml-2 my-2 my-sm-0" href="logout.php">Cerrar Sesión</a>';
     } else {
-      echo '<a class="btn btn-outline-success my-2 my-sm-0" href="signup.php"> Registrarse </a>';
-      echo '<a class="btn btn-success ml-2 my-2 my-sm-0" href="login.php"> Iniciar Sesión </a>';
+      echo '<a class="btn btn-outline-success my-2 my-sm-0" href="signup.php">Registrarse</a>';
+      echo '<a class="btn btn-success ml-2 my-2 my-sm-0" href="login.php">Iniciar Sesión</a>';
     }
     ?>
   </div>
