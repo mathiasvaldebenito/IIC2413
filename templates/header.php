@@ -19,17 +19,17 @@
 </head>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="index.php"> Home</a>
+  <?php echo "<a class='navbar-brand' href= '{$ROOT}'> Home</a>" ?>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="ongs.php">ONGs</a>
+        <?php echo "<a class='nav-link' href='{$ONGS_ROOT}'>ONGs</a>" ?>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="proyectos.php">Proyectos</a>
+        <?php echo "<a class='nav-link' href= '{$PROYECTOS_ROOT}'> Proyectos</a>" ?>
       </li>
     </ul>
     <?php session_start();
@@ -37,10 +37,10 @@
       $tipo = $_SESSION["type"];
       $nombre = $_SESSION["name"];
       echo "<span class='navbar-text'> ¡Hola {$tipo} {$nombre}! </span>";
-      echo '<a class="btn btn-danger ml-2 my-2 my-sm-0" href="logout.php">Cerrar Sesión</a>';
+      echo "<a class='btn btn-danger ml-2 my-2 my-sm-0' href='{$LOG_OUT_ROOT}'>Cerrar Sesión</a>";
     } else {
-      echo '<a class="btn btn-outline-success my-2 my-sm-0" href="signup.php">Registrarse</a>';
-      echo '<a class="btn btn-success ml-2 my-2 my-sm-0" href="login.php">Iniciar Sesión</a>';
+      echo "<a class='btn btn-outline-success my-2 my-sm-0' href='{$SIGN_UP_ROOT}'>Registrarse</a>";
+      echo "<a class='btn btn-success ml-2 my-2 my-sm-0' href='{$LOG_IN_ROOT}'>Iniciar Sesión</a>";
     }
     ?>
   </div>
