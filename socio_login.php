@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["socio_login"])){
               // Store data in session variables
               $_SESSION["loggedin"] = true;
               $_SESSION["id"] = $id;
-              $_SESSION["name"] = $firstname + "_" + $lastname;
+              $_SESSION["name"] = $firstname.' '.$lastname;
               $_SESSION["type"] = "Socio";
 
               // Redirect user to welcome page
