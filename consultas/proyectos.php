@@ -33,8 +33,9 @@
     </thead>
     <?php
     foreach ($proyectos as $proyecto) {
-            echo "<tr> <td>$proyecto[0]</td>
-                        <td>$proyecto[1]</td>
+            $proy_id = $proyecto[1];
+            echo "<tr> <td>$proy_id</td>
+                        <td><a href= 'show_proyecto.php?id=$proy_id'>$proyecto[1]</a> </td>
                         <td>$proyecto[2]</td> </tr>";
     }
     ?>
