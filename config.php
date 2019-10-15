@@ -7,4 +7,7 @@
   $LOG_OUT_ROOT = dirname(__FILE__).'/logout.php';
   $LOG_IN_ROOT = dirname(__FILE__).'/login.php';
   $SIGN_UP_ROOT = dirname(__FILE__).'/signup.php';
+  $MOVILIZATIONS_ONG_ROOT = dirname(__FILE__).'/consultas/movilizations_ong.php';
+  $CREATE_PROYECTO = dirname(__FILE__).'/consultas/create_proyecto.php';
+  $MY_MOVS_ROOT = dirname(__FILE__).'/consultas/mis_movilizaciones.php'
 ?>

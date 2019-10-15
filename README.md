@@ -9,9 +9,14 @@
               * view de una ONG en particular /Berna.
           * view para un recurso en particular /Mathias.
 
+  * En proyectos.php mostrar la lista de todos los proyectos y poner la consulta para filtrar
+    por proyecto
+
+  *
+
   * Detalles de proyectos, ONGs, recursos de protección.
 
-  * Búsqueda.
+  * Búsqueda. / va en index.php
 
   * Login de aplicación:
       * Para socios.
@@ -31,3 +36,6 @@
   * Credenciales:
      * Grupo 52 - Contraseña : wenaperro.
      * Grupo 41 - Contraseña : hola123.
+     * ONGs:
+          * usuario: ONG test
+          * password: 123456

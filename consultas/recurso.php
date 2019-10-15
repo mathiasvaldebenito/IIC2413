@@ -1,5 +1,5 @@
-<?php include('./../templates/header.html');   ?>
-<?php include('./../templates/layout_consultas.html');   ?>
+<?php require("./../config.php");?>
+<?php include('./../templates/header.php');   ?>
 
 <body>
   <?php

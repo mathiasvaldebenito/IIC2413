@@ -31,6 +31,18 @@
       <li class="nav-item">
         <?php echo "<a class='nav-link' href= '{$PROYECTOS_ROOT}'> Proyectos</a>" ?>
       </li>
+      <?php session_start();
+        if($_SESSION["type"] == "ONG"){
+          echo "<li class='nav-item'>";
+          echo "<a class='nav-link' href='{$MY_MOVS_ROOT}'>Mis movilizaciones</a>";
+          echo "</li>";
+        }
+        elseif ($_SESSION["type"] == "Socio"){
+          echo "<li class='nav-item'>";
+          echo "<a class='nav-link' href='{$CREATE_PROYECTO}'>Crea un Proyecto!</a>";
+          echo "</li>";
+        }
+       ?>
     </ul>
     <?php session_start();
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -38,6 +50,7 @@
       $nombre = $_SESSION["name"];
       echo "<span class='navbar-text'> ¡Hola {$tipo} {$nombre}! </span>";
       echo "<a class='btn btn-danger ml-2 my-2 my-sm-0' href='{$LOG_OUT_ROOT}'>Cerrar Sesión</a>";
+
     } else {
       echo "<a class='btn btn-outline-success my-2 my-sm-0' href='{$SIGN_UP_ROOT}'>Registrarse</a>";
       echo "<a class='btn btn-success ml-2 my-2 my-sm-0' href='{$LOG_IN_ROOT}'>Iniciar Sesión</a>";
