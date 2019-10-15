@@ -1,6 +1,13 @@
 <?php require("./../config.php");?>
 <?php include('./../templates/header.php');   ?>
 
+<br>
+<div class="container">
+  <div class="row justify-content-center">
+    <h2>Mis movilizaciones</h2>
+  </div>
+</div>
+
 <?php
     #Llama a conexión, crea el objeto PDO y obtiene la variable $db
   require("../config/conexion.php");
@@ -15,9 +22,9 @@
   $ongs = $result -> fetchAll();
 ?>
 <br>
-<div class=container>
-<div class="row justify-content-center" style="overflow: auto; max-height: 500px">
-<table class="table table-hover table-sm w-auto">
+
+<div class="row justify-content-center" style="overflow: auto; max-height: 400px;">
+<table class="table table-hover table-md w-auto">
   <thead class="thead-dark" style="position: sticky; top: 0;">
     <th>ONG</th>
     <th>Proyecto</th>
@@ -36,5 +43,44 @@ foreach ($ongs as $ong) {
 }
 ?>
 </table>
+
+</div>
+
+<br>
+<br>
+<br>
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <h2><u>Planifica una movilización</u></h2>
+  </div>
+</div>
+
+<br>
+
+<form action="planificacion_proyecto.php" method="post">
+  <div class="form-row justify-content-center">
+    <div class="col-2">
+      <label for="formGroupComuna">Comuna</label>
+      <input type="text" class="form-control" name="Comuna" placeholder="Comuna">
+    </div>
+    <div class="col-2">
+      <label for="formGroupPresupuesto">Presupuesto</label>
+      <input type="text" class="form-control" name="Presupuesto"  placeholder="Presupuesto">
+    </div>
+  </div>
+
+  <br>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <button type="submit" class="btn btn-primary">Planifica una Movilización</button>
+    </div>
+  </div>
+
+</form>
+
+<br>
 
 </html>
