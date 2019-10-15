@@ -31,6 +31,13 @@
       <li class="nav-item">
         <?php echo "<a class='nav-link' href= '{$PROYECTOS_ROOT}'> Proyectos</a>" ?>
       </li>
+      <li class="nav-item">
+        <?php session_start();
+        if($_SESSION["type"] == 'ONG'){
+          echo "<a class='nav-link' href='{$MY_MOVS_ROOT}'>Mis Movilizaciones</a>";
+        }
+        ?>
+      </li>
     </ul>
     <?php session_start();
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
