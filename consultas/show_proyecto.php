@@ -4,11 +4,11 @@
 <?php
     #Llama a conexión, crea el objeto PDO y obtiene la variable $db
   require("../config/conexion.php");
-  $proy_id = $_GET["id"];
+  $proy_name = $_GET["name"];
   $query = "SELECT denuncian.proyecto, tipo, numero
             FROM proyecto, denuncian
             WHERE denuncian.proyecto = proyecto.nombre
-            AND nombre LIKE '$proy_id';";
+            AND nombre LIKE '$proy_name';";
   $result = $db52 -> prepare($query);
   $result -> execute();
   $results = $result -> fetchAll();
