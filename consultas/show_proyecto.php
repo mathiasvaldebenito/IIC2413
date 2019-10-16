@@ -38,4 +38,11 @@
   </div>
 </div>
 
+<br>
+<form action="./proyectos.php" method="get" class="d-flex justify-content-center">
+    <input type="submit" class="btn btn-primary" value="Volver atrás">
+</form>
+</div>
+</body>
+
 </html>
