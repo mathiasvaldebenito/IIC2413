@@ -10,7 +10,7 @@
 
     $query = "SELECT id_proyecto, nombre, tipo
               FROM Proyectos
-              WHERE tipo='$filtro';";
+              WHERE tipo LIKE '%$filtro%';";
 
     $result = $db41 -> prepare($query);
     $result -> execute();
