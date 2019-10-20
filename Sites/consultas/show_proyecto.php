@@ -1,5 +1,5 @@
-<?php require("./../config.php");?>
-<?php include('./../templates/header.php');   ?>
+<?php require("../routes.php");?>
+<?php require("../templates/header.php");?>
 
 <?php
     #Llama a conexión, crea el objeto PDO y obtiene la variable $db
@@ -13,6 +13,7 @@
   $result -> execute();
   $results = $result -> fetchAll();
 ?>
+
 <br>
 
 <div class=container>
@@ -39,10 +40,11 @@
 </div>
 
 <br>
+
 <form action="./proyectos.php" method="get" class="d-flex justify-content-center">
     <input type="submit" class="btn btn-primary" value="Volver atrás">
 </form>
-</div>
+
 </body>
 
 </html>

@@ -1,16 +1,16 @@
-<?php require("./../config.php");?>
-<?php include('./../templates/header.php');   ?>
+<?php require("../routes.php");?>
+<?php require("../templates/header.php");?>
 
 <?php
-#Llama a conexión, crea el objeto PDO y obtiene la variable $db
-require("../config/conexion.php");
+  #Llama a conexión, crea el objeto PDO y obtiene la variable $db
+  require("../config/conexion.php");
 
-$query = "SELECT nombre, tipo
-          FROM Proyectos;";
+  $query = "SELECT nombre, tipo
+            FROM Proyectos;";
 
-$result = $db41 -> prepare($query);
-$result -> execute();
-$proyectos = $result -> fetchAll();
+  $result = $db41 -> prepare($query);
+  $result -> execute();
+  $proyectos = $result -> fetchAll();
 ?>
 
 <div class=container>
