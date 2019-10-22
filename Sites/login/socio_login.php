@@ -9,7 +9,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 require($CONFIG_ROUTE);
 
 // Define variables and initialize with empty values
-$firstname = $lastname = $socio_pass = "";
+$socio_name = $socio_pass = "";
 $firstname_err = $lastname_err = $user_err = $socio_pass_err = "";
 
 // Processing form data when form is submitted
@@ -18,13 +18,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["socio_login"])){
     // Check if name is empty
     if(empty(trim($_POST["firstname"]))) {
         $firstname_err = "Ingresa tu nombre.";
-    } else {
-        $firstname = trim($_POST["firstname"]);
     }
     if(empty(trim($_POST["lastname"]))) {
         $lastname_err = "Ingresa tu apellido.";
-    } else {
-        $lastname = trim($_POST["lastname"]);
     }
 
     // Check if password is empty
@@ -35,16 +31,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["socio_login"])){
     }
 
     if(!empty(trim($_POST["lastname"])) && !empty(trim($_POST["firstname"])) && !empty(trim($_POST["password"]))) {
-        $query = "SELECT id, firstname, lastname, password FROM socios_registrados
-                  WHERE firstname LIKE '$firstname' AND lastname LIKE '$lastname';";
+        $socio_name = trim($_POST["firstname"])." ".trim($_POST["lastname"]);
+        $query = "SELECT id, name, password FROM socios_registrados
+                  WHERE name LIKE '$socio_name';";
         $result = $db41 -> prepare($query);
         $result -> execute();
         $result = $result -> fetchAll();
         if (!empty($result)) {
           $id = $result[0][0];
-          $firstname = $result[0][1];
-          $lastname = $result[0][2];
-          $hashed_password = $result[0][3];
+          $socio_name = $result[0][1];
+          $hashed_password = $result[0][2];
           if(password_verify($socio_pass, $hashed_password)){
               // Password is correct, so start a new session
               session_start();
@@ -52,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["socio_login"])){
               // Store data in session variables
               $_SESSION["loggedin"] = true;
               $_SESSION["id"] = $id;
-              $_SESSION["name"] = $firstname.' '.$lastname;
+              $_SESSION["name"] = $socio_name;
               $_SESSION["type"] = "Socio";
 
               // Redirect user to welcome page

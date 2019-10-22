@@ -8,7 +8,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 // Include config file
 require($CONFIG_ROUTE);
 // Define variables and initialize with empty values
-$firstname = $lastname = $socio_pass = $socio_confirm_pass = "";
+$socio_name = $socio_pass = $socio_confirm_pass = "";
 $firstname_err = $lastname_err = $user_err = $socio_pass_err = $socio_confirm_pass_err = "";
 
 // Processing form data when form is submitted
@@ -22,17 +22,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["socio_signup"])){
         $lastname_err = "Ingresa un apellido.";
     }
     if(!empty(trim($_POST["lastname"])) && !empty(trim($_POST["firstname"]))){
-        $param_firstname = trim($_POST["firstname"]);
-        $param_lastname = trim($_POST["lastname"]);
-        $query = "SELECT id FROM socios_registrados WHERE firstname LIKE '$param_firstname' AND lastname LIKE '$param_lastname';";
+        $param_name = trim($_POST["firstname"])." ".trim($_POST["lastname"]);
+        $query = "SELECT id FROM socios_registrados WHERE name LIKE '$param_name';";
         $result = $db41 -> prepare($query);
         $result -> execute();
         $result = $result -> fetchAll();
         if (!empty($result)) {
             $user_err = "Este Socio ya está registrado.";
         } else{
-            $firstname = $param_firstname;
-            $lastname = $param_lastname;
+            $query = "SELECT nombre FROM socios WHERE nombre LIKE '$param_name';";
+            $result = $db41 -> prepare($query);
+            $result -> execute();
+            $result = $result -> fetchAll();
+            if (empty($result)) {
+                $user_err = "Este Socio no es válido para registrar.";
+            } else{
+                $socio_name = $param_name;
+            }
         }
     }
 
@@ -58,10 +64,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["socio_signup"])){
     // Check input errors before inserting in database
     if(empty($user_err) && empty($firstname_err) && empty($lastname_err) && empty($socio_pass_err) && empty($socio_confirm_pass_err)){
         $socio_pass = password_hash($socio_pass, PASSWORD_DEFAULT);
-        $register = "INSERT INTO socios_registrados (firstname, lastname, password) VALUES ('$firstname', '$lastname', '$socio_pass');";
+        $register = "INSERT INTO socios_registrados (name, password) VALUES ('$socio_name', '$socio_pass');";
         $result = $db41 -> prepare($register);
       	$result -> execute();
-        $query = "SELECT id FROM socios_registrados WHERE firstname LIKE '$firstname' AND lastname LIKE '$lastname';";
+        $query = "SELECT id FROM socios_registrados WHERE name LIKE '$socio_name';";
         $result = $db41 -> prepare($query);
         $result -> execute();
         $result = $result -> fetchAll();
@@ -71,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["socio_signup"])){
         // Store data in session variables
         $_SESSION["loggedin"] = true;
         $_SESSION["id"] = $id;
-        $_SESSION["name"] = $firstname + "_" + $lastname;
+        $_SESSION["name"] = $socio_name;
         $_SESSION["type"] = "Socio";
         header("location: $INDEX_ROUTE");
       }

@@ -33,6 +33,6 @@
             <input type="submit" class="btn btn-primary" value="Registrar">
             <input type="reset" class="btn btn-light" value="Limpiar">
         </div>
-        <p>¿Ya estás registrado? Inicia sesión <a href="index.php">aquí</a>.</p>
+        <?php echo "<p>¿Ya estás registrado? Inicia sesión <a href=$LOG_IN_ROUTE>aquí</a>.</p>"; ?>
     </form>
 </div>

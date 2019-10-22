@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ong_signup"])){
     if(empty(trim($_POST["name"]))) {
         $name_err = "Ingresa un nombre para la ONG.";
     } else{
-        $param_name = $_POST["name"];
+        $param_name = trim($_POST["name"]);
         $query = "SELECT id FROM ongs_registradas WHERE name LIKE '$param_name';";
         $result = $db41 -> prepare($query);
         $result -> execute();
@@ -27,7 +27,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ong_signup"])){
         if (!empty($result)) {
             $name_err = "Esta ONG ya está registrada.";
         } else{
-            $name = trim($_POST["name"]);
+            $query = "SELECT nombre FROM ongs WHERE nombre LIKE '$param_name';";
+            $result = $db52 -> prepare($query);
+            $result -> execute();
+            $result = $result -> fetchAll();
+            if (empty($result)) {
+                $user_err = "Esta ONG no es válida para registrar.";
+            } else{
+                $name = $param_name;
+            }
         }
     }
 

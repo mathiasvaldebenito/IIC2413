@@ -18,16 +18,12 @@ require("../templates/header.php");
 
           <div class="carousel-item active">
             <h2 class="card-title">Iniciar sesión como ONG</h2>
-              <?php
-              include('ong_login_form.php');
-              ?>
+              <?php include('ong_login_form.php'); ?>
           </div>
 
           <div class="carousel-item">
             <h2 class="card-title">Iniciar sesión como Socio</h2>
-              <?php
-              include('socio_login_form.php');
-              ?>
+              <?php include('socio_login_form.php'); ?>
           </div>
 
           </div>

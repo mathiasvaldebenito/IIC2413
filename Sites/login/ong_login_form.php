@@ -12,6 +12,6 @@
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Iniciar Sesión">
         </div>
-        <p>¿No tienes una cuenta? <a href="signup.php">Regístrate</a>.</p>
+        <?php echo "<p>¿No tienes una cuenta? <a href=$SIGN_UP_ROUTE>Regístrate</a>.</p>"; ?>
     </form>
 </div>
