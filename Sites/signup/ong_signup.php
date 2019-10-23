@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ong_signup"])){
             $result -> execute();
             $result = $result -> fetchAll();
             if (empty($result)) {
-                $user_err = "Esta ONG no es válida para registrar.";
+                $name_err = "Esta ONG no es válida para registrar.";
             } else{
                 $name = $param_name;
             }
