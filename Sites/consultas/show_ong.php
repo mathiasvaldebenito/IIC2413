@@ -39,7 +39,7 @@
         <?php
         foreach ($recursos as $rec) {
             echo "<tr> <td>$rec[0]</td>
-                       <td>$rec[1]</td>
+                       <td><a href= 'recursos.php?name=$rec[1]'>$rec[1]</a></td>
                        <td>$rec[2]</td> </tr>";
         }
         ?>

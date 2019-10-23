@@ -40,7 +40,7 @@
   $result -> execute();
   $last_id = $result -> fetchAll();
   $curr_id = $last_id[0][0] + 1;
-  $ong = 'Abbott ';
+  $ong = $_SESSION["name"];
   foreach ($proyectos as $proyecto){
     $proy_name = $proyecto[0];
     $content = $contents[$proyecto[1]];

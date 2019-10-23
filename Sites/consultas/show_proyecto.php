@@ -15,6 +15,7 @@
 ?>
 
 <br>
+<br>
 
 <div class=container>
   <div class="row justify-content-center">
@@ -31,7 +32,7 @@
         foreach ($results as $row) {
             echo "<tr> <td>$row[0]</td>
                        <td>$row[1]</td>
-                       <td>$row[2]</td> </tr>";
+                       <td><a href= 'recursos.php?name=$row[2]'>$row[2]</a></td> </tr>";
         }
         ?>
       </table>
@@ -39,6 +40,7 @@
   </div>
 </div>
 
+<br>
 <br>
 
 <form action="./proyectos.php" method="get" class="d-flex justify-content-center">

@@ -33,11 +33,13 @@
           <tr>
             <th>Nombre</th>
             <th>Tipo</th>
+            <?php if (isset($_SESSION["type"]) && $_SESSION["type"] == "Socio") { echo "<th>Se parte de este proyecto</th>"; }  ?>
           </tr>
         </thead>
         <?php foreach ($proyectos as $proyecto) {
                 echo "<tr> <td><a href= 'show_proyecto.php?name=$proyecto[0]'>$proyecto[0]</a> </td>
-                      <td>$proyecto[1]</td> </tr>";
+                      <td>$proyecto[1]</td>";
+                if (isset($_SESSION["type"]) && $_SESSION["type"] == "Socio") { echo "<td> <a href= 'join_proyecto.php?name=$proyecto[0]'>Unirse</a></td> </tr>"; }
               } ?>
       </table>
     </div>
