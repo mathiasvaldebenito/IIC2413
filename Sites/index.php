@@ -41,7 +41,7 @@ include("templates/header.php");
                     <div class="row justify-content-center">
                     <form action="consultas/busqueda_recurso.php" method="post">
                       <div class="input-group my-3">
-                          <input type="text" class="form-control" placeholder="Busqueda Recurso por nombre"
+                          <input type="text" class="form-control" placeholder="Busqueda Recurso por número"
                           aria-label="Busqueda Recurso por número" aria-describedby="button-addon2" name="busqueda_recurso">
                           <div class="input-group-append">
                               <input type="submit" class="btn btn-primary" value="Buscar">
