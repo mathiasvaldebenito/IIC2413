@@ -77,14 +77,6 @@
 </div>
 
 
-
-<br>
-<br>
-
-<form action="../index.php" method="get" class="d-flex justify-content-center">
-    <input type="submit" class="btn btn-primary" value="Volver inicio">
-</form>
-
 </body>
 
 </html>
