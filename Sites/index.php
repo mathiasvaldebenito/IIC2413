@@ -16,17 +16,25 @@ include("templates/header.php");
 
 <div class=container>
   <div class="row justify-content-center">
+    <div class="col-sm">
   <form action="consultas/busqueda_proyecto.php" method="post">
     <div class="input-group my-3">
         <input type="text" class="form-control" placeholder="Busqueda Proyecto por nombre"
         aria-label="Busqueda Proyecto por nombre" aria-describedby="button-addon2" name="busqueda_proyecto">
         <div class="input-group-append">
             <input type="submit" class="btn btn-primary" value="Buscar">
+        </form>
         </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
 
 
         <div class=container>
           <div class="row justify-content-center">
+            <div class="col-sm">
           <form action="consultas/busqueda_ong.php" method="post">
             <div class="input-group my-3">
                 <input type="text" class="form-control" placeholder="Busqueda ONG por nombre"
@@ -34,19 +42,27 @@ include("templates/header.php");
                 <div class="input-group-append">
                     <input type="submit" class="btn btn-primary" value="Buscar
                     ">
+                </form>
                 </div>
-
+              </div>
+              </div>
+              </div>
+              </div>
 
                 <div class=container>
                     <div class="row justify-content-center">
+                      <div class="col-sm">
                     <form action="consultas/busqueda_recurso.php" method="post">
                       <div class="input-group my-3">
                           <input type="text" class="form-control" placeholder="Busqueda Recurso por número"
                           aria-label="Busqueda Recurso por número" aria-describedby="button-addon2" name="busqueda_recurso">
                           <div class="input-group-append">
                               <input type="submit" class="btn btn-primary" value="Buscar">
+                          </form>
                           </div>
-
-
+                        </div>
+                        </div>
+                        </div>
+                        </div>
 
 </html>
