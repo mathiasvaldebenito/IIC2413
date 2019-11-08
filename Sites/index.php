@@ -10,10 +10,6 @@ include("templates/header.php");
 </div>
 </body>
 
-
-
-
-
 <div class=container>
   <div class="row justify-content-center">
     <div class="col-sm">
@@ -54,8 +50,8 @@ include("templates/header.php");
                       <div class="col-sm">
                     <form action="consultas/busqueda_recurso.php" method="post">
                       <div class="input-group my-3">
-                          <input type="text" class="form-control" placeholder="Busqueda Recurso por número"
-                          aria-label="Busqueda Recurso por número" aria-describedby="button-addon2" name="busqueda_recurso">
+                          <input type="text" class="form-control" placeholder="Busqueda Recurso por causa contaminación"
+                          aria-label="Busqueda Recurso por causa contaminación" aria-describedby="button-addon2" name="busqueda_recurso">
                           <div class="input-group-append">
                               <input type="submit" class="btn btn-primary" value="Buscar">
                           </form>
@@ -64,5 +60,6 @@ include("templates/header.php");
                         </div>
                         </div>
                         </div>
+
 
 </html>
