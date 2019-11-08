@@ -1,5 +1,5 @@
-<?php require("./../config.php");?>
-<?php include('./../templates/header.php');   ?>
+<?php require("../routes.php");?>
+<?php require("../templates/header.php");?>
 
 <?php
     #Llama a conexión, crea el objeto PDO y obtiene la variable $db

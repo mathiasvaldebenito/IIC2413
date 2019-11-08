@@ -32,7 +32,7 @@
         foreach ($results as $row) {
             echo "<tr> <td>$row[0]</td>
                        <td>$row[1]</td>
-                       <td><a href= 'recursos.php?name=$row[2]'>$row[2]</a></td> </tr>";
+                       <td><a href= 'show_recurso.php?number=$row[2]'>$row[2]</a></td> </tr>";
         }
         ?>
       </table>

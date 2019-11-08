@@ -1,3 +1,4 @@
+<?php require("../routes.php");?>
 <?php require("../templates/header.php");?>
 
 <?php
