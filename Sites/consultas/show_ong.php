@@ -63,7 +63,7 @@
         </thead>
         <?php
         foreach ($recursos as $rec) {
-            echo "<tr> <td><a href= 'show_recurso.php?number=$rec[0]'>$rec[0]</a></td> </td>
+            echo "<tr> <td><a href= 'recursos.php?name=$rec[0]'>$rec[0]</a></td> </td>
                        <td>$rec[1]</td> </tr>";
         }
         ?>
