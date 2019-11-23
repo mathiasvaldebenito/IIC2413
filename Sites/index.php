@@ -36,8 +36,7 @@ include("templates/header.php");
                 <input type="text" class="form-control" placeholder="Busqueda ONG por nombre"
                 aria-label="Busqueda ONG por nombre" aria-describedby="button-addon2" name="busqueda_ong">
                 <div class="input-group-append">
-                    <input type="submit" class="btn btn-primary" value="Buscar
-                    ">
+                    <input type="submit" class="btn btn-primary" value="Buscar">
                 </form>
                 </div>
               </div>

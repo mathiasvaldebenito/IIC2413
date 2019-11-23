@@ -46,29 +46,11 @@
     $content = $contents[$proyecto[1]];
     $type = rand(0,1); // 0: marcha, 1: rrss
     $id = $curr_id;
-    if($type == 0){
-      $insert = "INSERT INTO movilizacion (id, presupuesto, tipo) VALUES ($id, $presupuesto, 'marcha')";
-      $result = $db52 -> prepare($insert);
-      $result -> execute();
-      $asistencia = rand(100,10000);
-      $insert = "INSERT INTO movilizacionmarcha (id, asistencia, lugar) VALUES ($id, $asistencia, '$comuna')";
-      $result = $db52 -> prepare($insert);
-      $result -> execute();
-      $insert = "INSERT INTO convocan (id_movilizacion, nombre_ong, nombre_proyecto, fecha) VALUES ($id, '$ong','$proy_name', CURRENT_DATE + 90)";
-      $result = $db52 -> prepare($insert);
-      $result -> execute();
-    }
-    if($type == 1){
-      $insert = "INSERT INTO movilizacion (id, presupuesto, tipo) VALUES ($id, $presupuesto, 'redes sociales')";
-      $result = $db52 -> prepare($insert);
-      $result -> execute();
-      $insert = "INSERT INTO movilizacionredes (id, tipo_contenido, duracion) VALUES ($id, '$content', 90)";
-      $result = $db52 -> prepare($insert);
-      $result -> execute();
-      $insert = "INSERT INTO convocan (id_movilizacion, nombre_ong, nombre_proyecto, fecha) VALUES ($id, '$ong','$proy_name', CURRENT_DATE)";
-      $result = $db52 -> prepare($insert);
-      $result -> execute();
-    }
+    $asistencia = rand(100,10000);
+    $insert = "SELECT generar_movilizaciones($id, $type, $presupuesto, $asistencia,
+       '$comuna', '$ong', '$proy_name', '$content')";
+    $result = $db52 -> prepare($insert);
+    $result -> execute();
     $curr_id += 1;
   }
 ?>
