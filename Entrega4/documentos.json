@@ -1,0 +1,51 @@
+[
+  { "mid": 1,
+    "content": "content message 1",
+    "metadata": {
+            "time": "2018-04-18 05:20:37",
+            "sender": "name_sender_project_1",
+            "receiver": "name_receiver_project_1"
+      }
+  },
+  { "mid": 2,
+    "content": "content message 2",
+    "metadata": {
+            "time": "2019-05-18 07:20:37",
+            "sender": "name_sender_project_2",
+            "receiver": "name_receiver_project_2"
+      }
+  },
+  { "mid": 3,
+    "content": "content message 3",
+    "metadata": {
+            "time": "2020-04-18 05:20:37",
+            "sender": "name_sender_project_1",
+            "receiver": "name_receiver_project_2"
+      }
+  },
+  { "mid": 4,
+    "content": "content message 4",
+    "metadata": {
+            "time": "2019-12-12 12:12:12",
+            "sender": "name_sender_project_2",
+            "receiver": "name_receiver_project_1"
+      }
+  },
+  { "mid": 5,
+    "content": "content message 5",
+    "metadata": {
+            "time": "2012-07-30 11:11:37",
+            "sender": "name_sender_project_3",
+            "receiver": "name_receiver_project_1"
+      }
+  },
+  { "mid": 6,
+    "content": "content message 6",
+    "metadata": {
+            "time": "2020-10-31 00:00:00",
+            "sender": "name_sender_project_2",
+            "receiver": "name_receiver_project_3"
+      }
+  }
+
+]
