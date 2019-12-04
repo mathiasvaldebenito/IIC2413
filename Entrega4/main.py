@@ -34,12 +34,13 @@ def get_message(mid):
     return json.jsonify(message)
 
 @app.route("/messages/project-search")
-def get_project_messages():
-    '''
-    Implement code to return all the messages sended and received
-    by the partners of the same project.
-    Example:  "/messages/project-search?name_project=xxxxx".
-    '''
+def get_project_messages(proyect_name):
+    #La consulta funciona! La probé en mongo por consola, pero no se si funciona
+    # bien con la api
+    messages = db.documentos.createIndex({"metadata.sender":"text","metadata.receiver":"text"})
+    # Por ejemplo no estoy seguor que create.Index retorne una nueva db o modifica la anterior
+    search = list(messages.find({$text : {$search: proyect_name}}))
+    return search
 
 @app.route("/messages/content-search")
 def get_content_messages():
@@ -50,9 +51,26 @@ def get_content_messages():
 
 @app.route("/messages", methods=['POST'])
 def create_message():
-    '''
-    Implement code to create a new message in the db
-    '''
+    # Crea un nuevo mensaje en la base de datos. Se necesitan
+    # todos los valores menos el id
+    # Si los parámetros son enviados con una request de tipo
+    # application/json:
+    data = {key: request.json[key] for key in USER_KEYS}
+    # No se que pasa con las sub kyes, como la fecha y eso
+    # Se genera el uid
+    count = messages.count_documents({})
+    data["mid"] = count + 1
+    # Insertar retorna un objeto
+    result = messages.insert_one(data)
+    # Creo el mensaje resultado
+    if (result):
+        message = "Mensaje creado"
+        success = True
+    else:
+        message = "No se pudo crear el mensaje"
+        success = False
+    # Retorna el texto
+    return json.jsonify({"success":success, "message": message})
 
 @app.route("/messages/<int:mid>", methods=['DELETE'])
 def delete_messages(mid):
