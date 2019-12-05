@@ -1,5 +1,5 @@
 ﻿from flask import Flask, render_template, request, abort, json
-from pymongo import MongoClient
+from pymongo import MongoClient, TEXT
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
@@ -33,21 +33,26 @@ def get_message(mid):
     message = list(messages.find({"mid":mid},{"_id":0}))
     return json.jsonify(message)
 
-@app.route("/messages/project-search")
-def get_project_messages(proyect_name):
+#@app.route("/messages/project-search")
+#def get_project_messages(proyect_name):
     #La consulta funciona! La probé en mongo por consola, pero no se si funciona
     # bien con la api
-    messages = db.documentos.createIndex({"metadata.sender":"text","metadata.receiver":"text"})
+    #messages = db.documentos.createIndex({"metadata.sender":"text","metadata.receiver":"text"})
     # Por ejemplo no estoy seguor que create.Index retorne una nueva db o modifica la anterior
-    search = list(messages.find({$text : {$search: proyect_name}}))
-    return search
+    #search = list(messages.find({$text : {$search: proyect_name}}))
+    #return search
 
 @app.route("/messages/content-search")
 def get_content_messages():
-    '''
-    Implement code to return all the messages with the wanted words or wanted
-    sentences or prohibited word in the content.
-    '''
+    body = request.json
+    db.documentos.drop_indexes()
+    db.documentos.create_index([('content', TEXT)], name='content_index', default_language='spanish')
+    query = list(map(lambda str: f"\"{str}\"", body["required"]))
+    query += body["desired"]
+    query += list(map(lambda str: f"-{str}", body["forbidden"]))
+    query = " ".join(query)
+    search = list(messages.find({"$text" : {"$search": query, "$language": "es"}}, {"_id": 0}))
+    return json.jsonify(search)
 
 @app.route("/messages", methods=['POST'])
 def create_message():
@@ -64,7 +69,7 @@ def create_message():
     result = messages.insert_one(data)
     # Creo el mensaje resultado
     if (result):
-        message = "Mensaje creado"
+        message = f"Mensaje creado. (mid: {count + 1}"
         success = True
     else:
         message = "No se pudo crear el mensaje"
