@@ -38,14 +38,24 @@ def get_project_messages():
 
 @app.route("/messages/content-search")
 def get_content_messages():
-    body = request.json
-    db.documentos.drop_indexes()
-    db.documentos.create_index([('content', TEXT)], name='content_index', default_language='spanish')
-    query = list(map(lambda str: f"\"{str}\"", body["required"]))
-    query += body["desired"]
-    query += list(map(lambda str: f"-{str}", body["forbidden"]))
-    query = " ".join(query)
-    search = list(messages.find({"$text" : {"$search": query, "$language": "es"}}, {"_id": 0}))
+    if request.data:
+        body = request.json
+    else:
+        return get_messages()
+    if not body["required"] and not body["desired"] and not body["forbidden"]:
+        return get_messages()
+    elif not body["required"] and not body["desired"] and body["forbidden"]:
+        search = list(messages.find({"$and" :
+                 [{"content": {'$regex': f'^((?!{i}).)*$', '$options' : 'i'}}
+                 for i in body["forbidden"]]}, {"_id": 0}))
+    else:
+        db.documentos.drop_indexes()
+        db.documentos.create_index([('content', TEXT)], name='content_index', default_language='spanish')
+        query = list(map(lambda str: f"\"{str}\"", body["required"]))
+        query += body["desired"]
+        query += list(map(lambda str: f"-{str}", body["forbidden"]))
+        query = " ".join(query)
+        search = list(messages.find({"$text" : {"$search": query, "$language": "es"}}, {"_id": 0}))
     return json.jsonify(search)
 
 @app.route("/messages", methods=['POST'])
