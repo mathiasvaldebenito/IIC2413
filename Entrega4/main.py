@@ -38,10 +38,15 @@ def get_project_messages():
 
 @app.route("/messages/content-search")
 def get_content_messages():
-    '''
-    Implement code to return all the messages with the wanted words or wanted
-    sentences or prohibited word in the content.
-    '''
+    body = request.json
+    db.documentos.drop_indexes()
+    db.documentos.create_index([('content', TEXT)], name='content_index', default_language='spanish')
+    query = list(map(lambda str: f"\"{str}\"", body["required"]))
+    query += body["desired"]
+    query += list(map(lambda str: f"-{str}", body["forbidden"]))
+    query = " ".join(query)
+    search = list(messages.find({"$text" : {"$search": query, "$language": "es"}}, {"_id": 0}))
+    return json.jsonify(search)
 
 @app.route("/messages", methods=['POST'])
 def create_message():
