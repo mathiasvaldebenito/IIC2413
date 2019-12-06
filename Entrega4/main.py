@@ -1,20 +1,14 @@
-﻿from flask import Flask, render_template, request, abort, json
+from flask import Flask, render_template, request, abort, json
 from pymongo import MongoClient, TEXT
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-'''
-    Código extraído de AyudantiaAPI.
-'''
+MESSAGES_KEYS = ['content', 'metadata']
 
-MESSAGES_KEYS = ['content', 'metadata'] #not sure if this actually works
-
-#URL = "mongodb://grupo41:grupo41@gray.ing.puc.cl/grupo41"
-#client = MongoClient(URL)
-#db = client.get_database()
-client = MongoClient()
-db = client["entidades"]
+URL = "mongodb://grupo41:grupo41@gray.ing.puc.cl/grupo41"
+client = MongoClient(URL)
+db = client.get_database()
 messages = db.documentos
 
 app = Flask(__name__)
@@ -33,14 +27,14 @@ def get_message(mid):
     message = list(messages.find({"mid":mid},{"_id":0}))
     return json.jsonify(message)
 
-#@app.route("/messages/project-search")
-#def get_project_messages(proyect_name):
-    #La consulta funciona! La probé en mongo por consola, pero no se si funciona
-    # bien con la api
-    #messages = db.documentos.createIndex({"metadata.sender":"text","metadata.receiver":"text"})
-    # Por ejemplo no estoy seguor que create.Index retorne una nueva db o modifica la anterior
-    #search = list(messages.find({$text : {$search: proyect_name}}))
-    #return search
+@app.route("/messages/project-search")
+def get_project_messages():
+    proyect_name = request.args.get('name', False)
+    messages.drop_indexes()
+    messages.create_index([('metadata.sender', TEXT), ('metadata.receiver', TEXT)],
+     name='text', default_language='spanish')
+    search = list(messages.find({"$text" : {"$search": proyect_name}},{"_id":0}))
+    return json.jsonify(search)
 
 @app.route("/messages/content-search")
 def get_content_messages():
@@ -56,31 +50,26 @@ def get_content_messages():
 
 @app.route("/messages", methods=['POST'])
 def create_message():
-    # Crea un nuevo mensaje en la base de datos. Se necesitan
-    # todos los valores menos el id
-    # Si los parámetros son enviados con una request de tipo
-    # application/json:
-    data = {key: request.json[key] for key in USER_KEYS}
-    # No se que pasa con las sub kyes, como la fecha y eso
-    # Se genera el uid
-    count = messages.count_documents({})
-    data["mid"] = count + 1
-    # Insertar retorna un objeto
-    result = messages.insert_one(data)
-    # Creo el mensaje resultado
-    if (result):
-        message = f"Mensaje creado. (mid: {count + 1}"
-        success = True
-    else:
-        message = "No se pudo crear el mensaje"
-        success = False
-    # Retorna el texto
-    return json.jsonify({"success":success, "message": message})
+    try:
+        data = {key: request.json[key] for key in MESSAGES_KEYS}
+        count = messages.count_documents({})
+        data["mid"] = count + 1
+        result = messages.insert_one(data)
+        if (result):
+            message = f"Mensaje creado con mid:{count + 1}"
+            success = True
+        else:
+            message = "No se pudo crear el mensaje"
+            success = False
+        return json.jsonify({"success":success, "message": message})
+    except Exception as err:
+        message = str(err)
+        return json.jsonify({"success":False, "Error": message})
 
 @app.route("/messages/<int:mid>", methods=['DELETE'])
 def delete_messages(mid):
     messages.delete_one({"mid":mid})
-    message = f'Mensaje con id={mid} ha sido eliminado'
+    message = f'Mensaje con mid={mid} ha sido eliminado'
     return json.jsonify({'result': 'succes', 'message': message})
 
 if __name__ == "__main__":

@@ -46,6 +46,14 @@
             "sender": "name_sender_project_2",
             "receiver": "name_receiver_project_3"
       }
+  },
+  { "mid": 7,
+    "content": "content message 7",
+    "metadata": {
+            "time": "2020-10-31 00:00:00",
+            "sender": "name_receiver_project_3",
+            "receiver": "name_sender_project_2"
+      }
   }
 
 ]
